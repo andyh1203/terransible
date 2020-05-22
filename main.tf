@@ -1,6 +1,6 @@
 #----- IAM -----
 module "iam" {
-  source = "./modules/iam"
+  source                 = "./modules/iam"
   s3_access_role_name    = var.s3_access_role_name
   s3_access_profile_name = var.s3_access_profile_name
   s3_access_policy_name  = var.s3_access_policy_name
@@ -8,29 +8,29 @@ module "iam" {
 
 # ----- VPC -----
 module "vpc" {
-  source = "./modules/vpc"
-  vpc_cidr = var.vpc_cidr
-  localip = var.localip
-  enable_dns_hostnames = var.enable_dns_hostnames
-  enable_dns_support = var.enable_dns_support
-  igw_tags = var.igw_tags
-  public_route_table_tags = var.public_route_table_tags
+  source                   = "./modules/vpc"
+  vpc_cidr                 = var.vpc_cidr
+  localip                  = var.localip
+  enable_dns_hostnames     = var.enable_dns_hostnames
+  enable_dns_support       = var.enable_dns_support
+  igw_tags                 = var.igw_tags
+  public_route_table_tags  = var.public_route_table_tags
   private_route_table_tags = var.private_route_table_tags
-  aws_region = var.aws_region
-  public1_subnet_tags = var.public1_subnet_tags
-  public2_subnet_tags = var.public2_subnet_tags
-  private1_subnet_tags = var.private1_subnet_tags
-  private2_subnet_tags = var.private2_subnet_tags
-  rds1_subnet_tags = var.rds1_subnet_tags
-  rds2_subnet_tags = var.rds2_subnet_tags
-  rds3_subnet_tags = var.rds3_subnet_tags
-  rds_subnet_group_tags = var.rds_subnet_group_tags
+  aws_region               = var.aws_region
+  public1_subnet_tags      = var.public1_subnet_tags
+  public2_subnet_tags      = var.public2_subnet_tags
+  private1_subnet_tags     = var.private1_subnet_tags
+  private2_subnet_tags     = var.private2_subnet_tags
+  rds1_subnet_tags         = var.rds1_subnet_tags
+  rds2_subnet_tags         = var.rds2_subnet_tags
+  rds3_subnet_tags         = var.rds3_subnet_tags
+  rds_subnet_group_tags    = var.rds_subnet_group_tags
 }
 
 
 # ----- S3 code bucket -----
 module "s3" {
-  source = "./modules/s3"
+  source        = "./modules/s3"
   domain_name   = var.domain_name
   acl           = var.acl
   force_destroy = var.force_destroy
@@ -58,14 +58,14 @@ module "rds" {
 
 # # ----- Key Pair -----
 module "key_pair" {
-  source = "./modules/key_pair"
+  source          = "./modules/key_pair"
   key_name        = var.key_name
   public_key_path = var.public_key_path
 }
 
 # # ----- Compute -----
 module "compute" {
-  source = "./modules/compute"
+  source                           = "./modules/compute"
   dev_ami                          = var.dev_ami
   dev_instance_type                = var.dev_instance_type
   domain_name                      = var.domain_name
@@ -107,7 +107,7 @@ module "compute" {
 
 # # # ----- Route53 -----
 module "route53" {
-  source = "./modules/route53"
+  source                           = "./modules/route53"
   delegation_set                   = var.delegation_set
   domain_name                      = var.domain_name
   www_alias_evaluate_target_health = var.www_alias_evaluate_target_health

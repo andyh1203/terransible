@@ -370,10 +370,3 @@ variable "rds_subnet_group_tags" {
   type        = map(string)
   default     = {}
 }
-
-
-
-
-
-
-
