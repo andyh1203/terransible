@@ -3,12 +3,12 @@ output "db_subnet_group_name" {
     value = aws_db_subnet_group.wp_rds_subnet_group.name
 }
 
-output "vpc_security_group_ids" {
+output "vpc_rds_security_group_ids" {
     description = "VPC security group IDs"
     value = [aws_security_group.wp_rds_sg.id]
 }
 
-output "elb_sgs" {
+output "elb_security_groups" {
     description = "SG for ELB"
     value = [
     aws_security_group.wp_public_sg.id

@@ -75,3 +75,54 @@ variable "localip" {
 data "aws_availability_zones" "available" {
   state = "available"
 }
+
+variable "public1_subnet_tags" {
+  description = "Additional tags for the first public subnet"
+  type        = map(string)
+  default     = {}
+}
+
+variable "public2_subnet_tags" {
+  description = "Additional tags for the second public subnet"
+  type        = map(string)
+  default     = {}
+}
+
+variable "private1_subnet_tags" {
+  description = "Additional tags for the first private subnet"
+  type        = map(string)
+  default     = {}
+}
+
+variable "private2_subnet_tags" {
+  description = "Additional tags for the second private subnet"
+  type        = map(string)
+  default     = {}
+}
+
+variable "rds1_subnet_tags" {
+  description = "Additional tags for the first rds subnet"
+  type        = map(string)
+  default     = {}
+}
+
+variable "rds2_subnet_tags" {
+  description = "Additional tags for the second rds subnet"
+  type        = map(string)
+  default     = {}
+}
+
+variable "rds3_subnet_tags" {
+  description = "Additional tags for the third rds subnet"
+  type        = map(string)
+  default     = {}
+}
+
+variable "rds_subnet_group_tags" {
+  description = "Additional tags for the third rds subnet"
+  type        = map(string)
+  default     = {}
+}
+
+
+

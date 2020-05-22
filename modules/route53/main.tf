@@ -13,7 +13,7 @@ resource "aws_route53_record" "www" {
   alias {
     name                   = var.elb_dns_name
     zone_id                = var.elb_zone_id
-    evaluate_target_health = false
+    evaluate_target_health = var.www_alias_evaluate_target_health
   }
 }
 
@@ -21,8 +21,8 @@ resource "aws_route53_record" "www" {
 resource "aws_route53_record" "dev" {
   zone_id = aws_route53_zone.primary.zone_id
   name    = "dev.${var.domain_name}.com"
-  type    = "A"
-  ttl     = "300"
+  type    = var.dev_route_record_type
+  ttl     = var.dev_route_ttl
   records = var.dev_instance_public_ips
 }
 
@@ -39,8 +39,8 @@ resource "aws_route53_zone" "secondary" {
 resource "aws_route53_record" "db" {
   zone_id = aws_route53_zone.secondary.zone_id
   name    = "db.${var.domain_name}.com"
-  type    = "CNAME"
-  ttl     = "300"
+  type    = var.db_route_record_type
+  ttl     = var.db_route_ttl
   records = var.db_addresses
 }
 
